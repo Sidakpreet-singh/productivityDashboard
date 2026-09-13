@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ATmos</title>
+    <link rel="icon" type="image/png" href="assets/image_d3a40d66.jpg">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body  >
+
+ 
+
+
+    <div class="app">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-icon">✦</div>
+
+                <div class="brand-text">
+                    <h2>ATmos</h2>
+
+                    <button class="sidebar-toggle" id="sidebar-toggle">
+    ☰
+</button>
+                    
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-line"></div>
+
+
+         
+<nav class="sidebar-nav">
+
+    <button class="nav-item active">
+        <span class="nav-icon">
+            <i data-lucide="layout-dashboard"></i>
+        </span>
+        <span>Dashboard</span>
+    </button>
+
+    <button class="nav-item">
+        <span class="nav-icon">
+            <i data-lucide="timer"></i>
+        </span>
+        <span>Focus</span>
+    </button>
+
+    <button class="nav-item">
+        <span class="nav-icon">
+            <i data-lucide="check-square"></i>
+        </span>
+        <span>Tasks</span>
+    </button>
+
+    <button class="nav-item">
+        <span class="nav-icon">
+            <i data-lucide="calendar-days"></i>
+        </span>
+        <span>Planner</span>
+    </button>
+
+    <button class="nav-item">
+        <span class="nav-icon">
+            <i data-lucide="target"></i>
+        </span>
+        <span>Goals</span>
+    </button>
+
+</nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button class="nav-item theme-btn">
+                    <span>☼</span>
+                    <span class="theme-txt"></span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN ================= -->
+
+        <main class="main-content page dashboard-page"  >
+
+               <!-- Background Weather Video -->
+    <video  id="background-video" autoplay muted  playsinline>
+       
+    </video>
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <p class="small-label">
+                        PRODUCTIVITY DASHBOARD
+                    </p>
+
+                    <h1>
+                        Good Evening
+                    </h1>
+
+                    <p class="greeting">
+                        Make today count.
+                    </p>
+
+                </div>
+
+
+
+            </header>
+
+
+            <!-- ================= DASHBOARD ================= -->
+
+            <section class="dashboard" >
+
+
+                <!-- ================= CARD 1 ================= -->
+
+                <div class="main-card">
+
+                    <!-- DATE / TIME -->
+
+                    <div class="date-area">
+
+                        <p class="small-label">
+                            TODAY
+                        </p>
+
+                        <h2 class="date">
+                            Saturday, 01 January 2026
+                        </h2>
+
+                        <p class="time">
+                            00:00:00
+                        </p>
+
+                    </div>
+
+
+                    <!-- WEATHER -->
+
+                    <div class="weather-area">
+
+                        <p class="small-label">
+                            WEATHER
+                        </p>
+
+                        <h2 class="location">
+                            Ludhiana, India
+                        </h2>
+
+
+                        <div class="weather-info">
+
+                            <span class="temperature">
+                                28°
+                            </span>
+
+                            <div>
+
+                               
+                                     <p id="Weathercode">Cloudy</p>
+                             
+
+                                
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="weather-details">
+
+                            <span >
+                                Humidity <span class="Humidity">--</span>
+                            </span>
+
+                            <span>
+                                Wind <span class="wind">-- km/h</span>
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= CARD 2 ================= -->
+
+                <div class="quote-card">
+
+                    <p class="small-label">
+                        DAILY MOTIVATION
+                    </p>
+
+                    <blockquote>
+                        "Stay focused and keep moving forward."
+                    </blockquote>
+
+                    <span>
+                        — Unknown
+                    </span>
+
+                </div>
+
+
+                <!-- ================= CARD 3 ================= -->
+
+                <div class="focus-card">
+
+                    <div class="focus-icon">
+                        ✦
+                    </div>
+
+
+                    <div class="focus-content">
+
+                        <p class="small-label">
+                            FOCUS TODAY
+                        </p>
+
+                        <h3>
+                            <span id="remain-tasks">3</span> task remaining
+                        </h3>
+
+                        <div class="progress">
+
+                            <div class="progress-fill"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+            
+        </main>
+        
+        <section class="focus-section focus-page page hide" >
+        
+            <!-- Focus Header -->
+            <div class="section-header">
+                <div>
+                    <p class="small-label">FOCUS MODE</p>
+                    <h2>Deep Work</h2>
+                    <p>Stay focused. One session at a time.</p>
+                </div>
+        
+            
+            </div>
+        
+        
+            <!-- Main Focus Area -->
+            
+                <!-- Timer Card -->
+                <div class="focus-timer-card">
+        
+                    <p class="small-label">CURRENT SESSION</p>
+        
+                    <div class="timer">
+                        25:00
+                    </div>
+        
+                    <p class="session-type">
+                        Focus Session
+                    </p>
+        
+                    <div class="timer-progress">
+                        <div class="timer-progress-fill"></div>
+                    </div>
+        
+                    <div class="timer-controls">
+        
+                        <button class="timer-btn secondary" id="reset-timer">
+                            Reset
+                        </button>
+        
+                        <button class="timer-btn primary" id="start-timer">
+                            Start
+                        </button>
+        
+                        <button class="timer-btn secondary" id="stop-timer">
+                            Stop
+                        </button>
+        
+                    </div>
+        
+                </div>
+        
+        
+ 
+        
+            
+        
+        
+            <!-- Session Selector -->
+            <div class="session-card">
+        
+                <p class="small-label">SESSION LENGTH</p>
+        
+                <div class="session-options">
+        
+                    <button class="session-option active">
+                        25 min
+                    </button>
+        
+                    <button class="session-option">
+                        45 min
+                    </button>
+        
+                    <button class="session-option">
+                        60 min
+                    </button>
+        
+                </div>
+        
+            </div>
+        
+        </section>
+
+
+        <section class="page tasks-page hide">
+
+    <div class="tasks-header">
+
+        <div >
+            <p class="small-label">TASK MANAGEMENT</p>
+            <h2>Tasks</h2>
+            <p class="tasks-subtitle">
+                Organize your day. Get things done.
+            </p>
+        </div>
+
+        <div class="task-count">
+            <span id="task-count">0</span>
+            <span>tasks</span>
+        </div>
+
+    </div>
+
+
+    <!-- Add Task -->
+
+    <div class="task-input-card">
+
+        <input
+            type="text"
+            id="task-input"
+            placeholder="What needs to be done?"
+        >
+
+        <button id="add-task">
+            + Add Task
+        </button>
+
+    </div>
+
+
+    <!-- Filters -->
+
+    <div class="task-toolbar">
+
+        <div class="task-filters">
+
+            <button class="task-filter active" data-filter="all">
+                All
+            </button>
+
+            <button class="task-filter" data-filter="active">
+                Active
+            </button>
+
+            <button class="task-filter" data-filter="completed">
+                Completed
+            </button>
+
+        </div>
+
+        <button class="clear-completed" id="clear-completed">
+            Clear Completed
+        </button>
+
+    </div>
+
+
+    <!-- Todo List -->
+
+    <div class="todo-list" id="todo-list">
+
+        <!-- JS will add tasks here -->
+
+        <div class="empty-tasks">
+
+            <div class="empty-icon">✓</div>
+
+            <h3>No tasks yet</h3>
+
+            <p>
+                Add a task above and start getting things done.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="page planner-page hide">
+
+    <div class="planner-header">
+
+        <div>
+            <p class="small-label">DAILY PLANNER</p>
+
+            <h2>Plan Your Day</h2>
+
+            <p class="planner-subtitle">
+                Organize your time. Stay in control.
+            </p>
+        </div>
+
+        <div class="planner-date">
+            <span class="planner-day">Monday</span>
+            <span class="planner-full-date">13 September 2026</span>
+        </div>
+
+    </div>
+
+
+   <div class="planner-card">
+
+    <div class="planner-card-header">
+
+        <div>
+            <p class="small-label">TODAY'S PLAN</p>
+            <h3>Daily Planner</h3>
+        </div>
+
+        <button class="add-plan" id="add-plan">
+            + Add Plan
+        </button>
+
+    </div>
+
+
+    <div class="plan-list">
+
+        <div class="plan-item">
+            <span class="plan-time">08:00</span>
+            <span class="plan-title">Morning Routine</span>
+            <button class="plan-status">○</button>
+        </div>
+
+        <div class="plan-item">
+            <span class="plan-time">10:00</span>
+            <span class="plan-title">Deep Work</span>
+            <button class="plan-status">○</button>
+        </div>
+
+        <div class="plan-item completed">
+            <span class="plan-time">13:00</span>
+            <span class="plan-title">Lunch Break</span>
+            <button class="plan-status">✓</button>
+        </div>
+
+        <div class="plan-item">
+            <span class="plan-time">15:00</span>
+            <span class="plan-title">Project Work</span>
+            <button class="plan-status">○</button>
+        </div>
+
+        <div class="plan-item">
+            <span class="plan-time">18:00</span>
+            <span class="plan-title">Gym</span>
+            <button class="plan-status">○</button>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+<!-- ADD PLAN MODAL -->
+
+<div class="plan-modal-overlay" id="plan-modal">
+
+    <div class="plan-modal">
+
+        <div class="modal-header">
+            <div>
+                <p class="small-label">NEW PLAN</p>
+                <h3>Add Plan</h3>
+            </div>
+
+            <button class="close-modal" id="close-modal">
+                ×
+            </button>
+        </div>
+
+
+        <div class="modal-form">
+
+            <div class="form-group">
+                <label for="plan-time">Time</label>
+
+                <input
+                    type="time"
+                    id="plan-time"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label for="plan-title">Plan</label>
+
+                <input
+                    type="text"
+                    id="plan-title"
+                    placeholder="What do you want to do?"
+                >
+            </div>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+            <button
+                class="cancel-plan"
+                id="cancel-plan"
+            >
+                Cancel
+            </button>
+
+            <button
+                class="save-plan"
+                id="save-plan"
+            >
+                Add Plan
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<section class="page goals-page hide">
+
+    <div class="goals-header">
+
+        <div>
+            <p class="small-label">GOAL TRACKER</p>
+
+            <h2>My Goals</h2>
+
+            <p class="goals-subtitle">
+                Set targets. Track your progress.
+            </p>
+        </div>
+
+        <button class="add-goal" id="add-goal">
+            + Add Goal
+        </button>
+
+    </div>
+
+
+    <div class="goals-list" id="goals-list">
+
+        <!-- Goal -->
+
+        <div class="goal-card">
+
+            <div class="goal-top">
+
+                <div>
+                    <h3 class="goal-title">
+                        Learn JavaScript
+                    </h3>
+
+                    <p class="goal-target">
+                        Complete 20 lessons
+                    </p>
+                </div>
+
+                <div class="goal-actions">
+
+                    <button class="edit-goal">
+                        ✎
+                    </button>
+
+                    <button class="delete-goal">
+                        ×
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="goal-progress-area">
+
+                <div class="goal-progress-info">
+
+                    <span>
+                        13 / 20
+                    </span>
+
+                    <span class="goal-percentage">
+                        65%
+                    </span>
+
+                </div>
+
+                <div class="goal-progress-bar">
+
+                    <div
+                        class="goal-progress-fill"
+                        style="width: 65%;"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="goal-bottom">
+
+                <span class="goal-status">
+                    In Progress
+                </span>
+
+                <div class="goal-counter">
+
+                    <button class="decrease-goal">
+                        −
+                    </button>
+
+                    <button class="increase-goal">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Goal -->
+
+        <div class="goal-card">
+
+            <div class="goal-top">
+
+                <div>
+                    <h3 class="goal-title">
+                        Read Books
+                    </h3>
+
+                    <p class="goal-target">
+                        Read 5 books
+                    </p>
+                </div>
+
+                <div class="goal-actions">
+
+                    <button class="edit-goal">
+                        ✎
+                    </button>
+
+                    <button class="delete-goal">
+                        ×
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="goal-progress-area">
+
+                <div class="goal-progress-info">
+
+                    <span>
+                        2 / 5
+                    </span>
+
+                    <span class="goal-percentage">
+                        40%
+                    </span>
+
+                </div>
+
+                <div class="goal-progress-bar">
+
+                    <div
+                        class="goal-progress-fill"
+                        style="width: 40%;"
+                    ></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="goal-bottom">
+
+                <span class="goal-status">
+                    In Progress
+                </span>
+
+                <div class="goal-counter">
+
+                    <button class="decrease-goal">
+                        −
+                    </button>
+
+                    <button class="increase-goal">
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<div class="goal-modal-overlay" id="goal-modal">
+
+    <div class="goal-modal">
+
+        <div class="goal-modal-header">
+
+            <div>
+                <p class="small-label" id="goal-modal-label">
+                    NEW GOAL
+                </p>
+
+                <h3 id="goal-modal-title">
+                    Add Goal
+                </h3>
+            </div>
+
+            <button class="close-goal-modal" id="close-goal-modal">
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="goal-form">
+
+            <div class="goal-form-group">
+
+                <label for="goal-name">
+                    Goal
+                </label>
+
+                <input
+                    type="text"
+                    id="goal-name"
+                    placeholder="What do you want to achieve?"
+                >
+
+            </div>
+
+
+            <div class="goal-form-group">
+
+                <label for="goal-target">
+                    Target
+                </label>
+
+                <input
+                    type="number"
+                    id="goal-target"
+                    min="1"
+                    placeholder="e.g. 20"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="goal-modal-actions">
+
+            <button
+                class="cancel-goal"
+                id="cancel-goal"
+            >
+                Cancel
+            </button>
+
+            <button
+                class="save-goal"
+                id="save-goal"
+            >
+                Add Goal
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

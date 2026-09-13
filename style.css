@@ -1,0 +1,3094 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: #222;
+    background: #f5f5f5;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app {
+    min-height: 100vh;
+    display: flex;
+    
+}
+
+
+/* =========================================================
+   MAIN CONTENT + VIDEO
+========================================================= */
+
+.main-content {
+    position: relative;
+
+    flex: 1;
+    min-width: 0;
+    min-height: 100vh;
+
+    padding: 35px 50px;
+    color: white;
+    overflow: hidden;
+}
+
+#background-video {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    z-index: 0;
+}
+
+.main-content::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.14);
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+.topbar,
+.dashboard {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    width: 230px;
+    height: 100vh;
+
+    padding: 28px 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border-right: 1px solid rgba(0, 0, 0, 0.10);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: #222;
+
+    overflow: hidden;
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease,
+        border 0.3s ease;
+}
+
+
+/* =========================
+   BRAND
+========================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.brand-icon {
+    width: 40px;
+    height: 40px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: rgba(0, 0, 0, 0.07);
+
+    color: #222;
+
+    font-size: 20px;
+}
+
+.brand-text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand-text h2 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.brand-text span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    opacity: 0.5;
+}
+
+
+/* =========================
+   SIDEBAR LINE
+========================= */
+
+.sidebar-line {
+    height: 1px;
+
+    margin: 28px 0;
+
+    background: rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.nav-item {
+    width: 100%;
+
+    padding: 12px 13px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #222;
+
+    font-size: 16px;
+    
+
+    text-align: left;
+
+    cursor: pointer;
+
+    opacity: 0.62;
+
+    transition: 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(12, 23, 150);
+    color: white;
+
+    opacity: 1;
+}
+
+.nav-item.active {
+    background: rgba(12, 23, 150);
+    color: white;
+
+    opacity: 1;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.nav-icon svg {
+    width: 19px;
+    height: 19px;
+
+    stroke-width: 2.5;
+}
+
+/* =========================
+   SIDEBAR BOTTOM
+========================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+
+/* =========================================================
+   SIDEBAR COLLAPSE
+========================================================= */
+
+.sidebar-collapsed .sidebar {
+    width: 75px;
+}
+
+.sidebar-collapsed .brand-text h2,
+.sidebar-collapsed .brand-icon,
+.sidebar-collapsed .nav-item span:nth-child(2) {
+    display: none;
+}
+
+.sidebar-collapsed .brand {
+    justify-content: center;
+}
+
+.sidebar-collapsed .nav-item {
+    justify-content: center;
+}
+
+
+/* =========================================================
+   SIDEBAR TOGGLE
+========================================================= */
+
+.sidebar-toggle {
+    padding: 12px;
+    
+
+    background: rgba(0, 0, 0, 0.07);
+
+    color: #222;
+
+    border: 1px solid rgba(0, 0, 0, 0.12);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   DARK MODE
+   ONLY SIDEBAR
+========================================================= */
+
+body.dark-mode .sidebar {
+    background: #111;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+
+    color: white;
+}
+
+body.dark-mode .sidebar .nav-item {
+    color: white;
+}
+
+body.dark-mode .sidebar .nav-item:hover,
+body.dark-mode .sidebar .nav-item.active {
+    background: rgba(12, 23, 150, 0.438);
+
+    opacity: 1;
+}
+
+body.dark-mode .sidebar .brand-icon {
+    background: rgba(255, 255, 255, 0.10);
+
+    color: white;
+}
+
+body.dark-mode .sidebar .sidebar-line {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+body.dark-mode .sidebar-toggle {
+    background: rgba(255, 255, 255, 0.18);
+
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+body.dark-mode .sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+
+/* =========================================================
+   TOPBAR
+========================================================= */
+
+.topbar {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+.small-label {
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    font-weight: 600;
+
+    opacity: 0.58;
+}
+
+.topbar h1 {
+    margin-top: 7px;
+
+    font-size: 34px;
+
+    font-weight: 400;
+}
+
+.greeting {
+    margin-top: 6px;
+
+    font-size: 14px;
+
+    opacity: 0.6;
+}
+
+
+/* =========================================================
+   DASHBOARD
+   KEEPING ORIGINAL LOOK
+========================================================= */
+
+.dashboard {
+    min-height: calc(100vh - 150px);
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    max-width: 1050px;
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.main-card {
+    width: 760px;
+
+    min-height: 245px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    background: rgba(15, 17, 19, 0.25);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    overflow: hidden;
+}
+
+.date-area {
+    padding: 30px;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.date {
+    margin-top: 12px;
+
+    font-size: 24px;
+
+    font-weight: 400;
+
+    line-height: 1.35;
+}
+
+.time {
+    margin-top: 17px;
+
+    font-size: 42px;
+
+    font-weight: 300;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   WEATHER
+========================= */
+
+.weather-area {
+    padding: 30px;
+}
+
+.location {
+    margin-top: 10px;
+
+    font-size: 21px;
+
+    font-weight: 400;
+}
+
+.weather-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 17px;
+
+    margin-top: 20px;
+}
+
+.temperature {
+    font-size: 52px;
+
+    font-weight: 300;
+}
+
+.weather-info p {
+    margin-bottom: 5px;
+
+    font-size: 15px;
+}
+
+.weather-details {
+    display: flex;
+
+    gap: 18px;
+
+    margin-top: 22px;
+
+    font-size: 12px;
+
+    opacity: 0.58;
+}
+
+
+/* =========================================================
+   QUOTE CARD
+========================================================= */
+
+.quote-card {
+    width: 600px;
+
+    padding: 22px 26px;
+
+    background: rgba(15, 17, 19, 0.22);
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.quote-card blockquote {
+    margin-top: 10px;
+
+    margin-bottom: 7px;
+
+    font-size: 18px;
+
+    line-height: 1.5;
+
+    font-weight: 300;
+
+    font-style: italic;
+}
+
+.quote-card > span {
+    font-size: 12px;
+
+    opacity: 0.55;
+}
+
+
+/* =========================================================
+   FOCUS NOTIFICATION CARD
+========================================================= */
+
+.focus-card {
+    width: 275px;
+
+    padding: 13px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    align-self: flex-end;
+
+    background: rgba(15, 17, 19, 0.38);
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    border-radius: 14px;
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+}
+
+.focus-icon {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    font-size: 16px;
+}
+
+.focus-content {
+    flex: 1;
+}
+
+.focus-content .small-label {
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 3px;
+}
+
+.focus-content h3 {
+    margin-bottom: 7px;
+
+    font-size: 13px;
+
+    font-weight: 500;
+}
+
+.progress {
+    width: 100%;
+
+    height: 3px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.progress-fill {
+    width: 100%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: rgba(255, 255, 255, 0.75);
+}
+
+
+/* =========================================================
+   FOCUS PAGE — LIGHT UI
+========================================================= */
+
+.focus-section {
+   
+    width: 85%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+   
+    
+
+    justify-content: center;
+    align-items: center;
+
+    color: #222;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.section-header {
+    width: 100%;
+
+    padding-left: 20px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 30px;
+}
+
+.section-header h2 {
+    margin: 5px 0;
+
+    font-size: 32px;
+
+    font-weight: 500;
+
+    color: #222;
+}
+
+.section-header p:not(.small-label) {
+    margin: 0;
+
+    color: rgba(0, 0, 0, 0.55);
+}
+
+
+
+
+
+/* =========================
+   FOCUS CONTAINER
+========================= */
+
+.focus-container {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 1fr;
+
+    gap: 20px;
+}
+
+
+/* =========================
+   TIMER CARD
+========================= */
+
+.focus-timer-card {
+    padding: 45px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border: 1px solid rgba(0, 0, 0, 0.10);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.10);
+
+    color: #222;
+}
+
+.timer {
+    margin-top: 15px;
+
+    font-size: 90px;
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+    color: #222;
+}
+
+.session-type {
+    margin-top: 0;
+
+    color: rgba(0, 0, 0, 0.55);
+}
+
+
+/* =========================
+   TIMER PROGRESS
+========================= */
+
+.timer-progress {
+    width: 100%;
+
+    height: 5px;
+
+    margin: 30px 0;
+
+    border-radius: 10px;
+
+    background: rgba(0, 0, 0, 0.10);
+
+    overflow: hidden;
+}
+
+.timer-progress-fill {
+    width: 35%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: rgba(0, 0, 0, 0.65);
+}
+
+
+/* =========================
+   TIMER CONTROLS
+========================= */
+
+.timer-controls {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.timer-btn {
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    border: 1px solid rgba(0, 0, 0, 0.12);
+
+    cursor: pointer;
+
+    color: #222;
+
+    font-size: 14px;
+
+    transition: 0.25s ease;
+}
+
+.timer-btn.primary {
+    padding: 13px 30px;
+
+    background: #222;
+
+    color: white;
+
+    border-color: #222;
+}
+
+.timer-btn.secondary {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.timer-btn:hover {
+    background: rgba(0, 0, 0, 0.10);
+
+    transform: translateY(-2px);
+}
+
+.timer-btn.primary:hover {
+    background: #333;
+}
+
+
+
+/* =========================
+   DAILY GOAL
+========================= */
+
+.focus-goal {
+    margin-top: 25px;
+}
+
+.goal-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+
+    font-size: 13px;
+
+    color: rgba(0, 0, 0, 0.60);
+}
+
+.goal-progress {
+    width: 100%;
+
+    height: 6px;
+
+    border-radius: 10px;
+
+    background: rgba(0, 0, 0, 0.10);
+
+    overflow: hidden;
+}
+
+.goal-progress-fill {
+    width: 80%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: rgba(0, 0, 0, 0.65);
+}
+
+
+/* =========================================================
+   SESSION CARD
+========================================================= */
+
+.session-card {
+    width: 60%;
+
+    margin-top: 20px;
+
+    padding: 22px 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.72);
+
+    border: 1px solid rgba(0, 0, 0, 0.10);
+
+    border-radius: 22px;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.10);
+
+    color: #222;
+}
+
+
+/* =========================
+   SESSION OPTIONS
+========================= */
+
+.session-options {
+    display: flex;
+
+    gap: 10px;
+}
+
+.session-option {
+    padding: 9px 15px;
+
+    border-radius: 9px;
+
+    border: 1px solid rgba(0, 0, 0, 0.10);
+
+    background: rgba(0, 0, 0, 0.04);
+
+    color: rgba(0, 0, 0, 0.65);
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.session-option:hover,
+.session-option.active {
+    background: #222;
+
+    color: white;
+
+    border-color: #222;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        padding: 30px;
+    }
+
+    .main-card {
+        width: 100%;
+    }
+
+    .quote-card {
+        width: 80%;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .focus-container {
+        grid-template-columns: 1fr;
+    }
+
+    .timer {
+        font-size: 65px;
+    }
+
+    .section-header {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .session-card {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .app {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 15px;
+    }
+
+    .sidebar-line {
+        margin: 15px 0;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+
+        overflow-x: auto;
+    }
+
+    .nav-item {
+        width: auto;
+
+        white-space: nowrap;
+    }
+
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .main-card {
+        grid-template-columns: 1fr;
+
+        width: 100%;
+    }
+
+    .date-area {
+        border-right: none;
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    }
+
+    .quote-card {
+        width: 100%;
+    }
+
+    .focus-card {
+        width: 100%;
+
+        align-self: flex-start;
+    }
+}
+
+/* =========================================================
+   FOCUS DARK MODE
+   Only Focus UI changes
+========================================================= */
+
+body.dark-mode .focus-section {
+    color: #fff;
+    background-color: #222;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+body.dark-mode .section-header h2 {
+    color: #fff;
+}
+
+body.dark-mode .section-header p:not(.small-label) {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+body.dark-mode .focus-status {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+
+/* =========================
+   TIMER CARD
+========================= */
+
+body.dark-mode .focus-timer-card {
+    background: rgba(15, 17, 19, 0.55);
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+
+    color: #fff;
+}
+
+
+/* =========================
+   TIMER
+========================= */
+
+body.dark-mode .timer {
+    color: #fff;
+}
+
+body.dark-mode .session-type {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* =========================
+   TIMER PROGRESS
+========================= */
+
+body.dark-mode .timer-progress {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+body.dark-mode .timer-progress-fill {
+    background: rgba(255, 255, 255, 0.75);
+}
+
+
+/* =========================
+   TIMER BUTTONS
+========================= */
+
+body.dark-mode .timer-btn {
+    border-color: rgba(255, 255, 255, 0.15);
+
+    color: #fff;
+}
+
+body.dark-mode .timer-btn.primary {
+    background: #fff;
+
+    color: #222;
+
+    border-color: #fff;
+}
+
+body.dark-mode .timer-btn.secondary {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .timer-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+
+    transform: translateY(-2px);
+}
+
+body.dark-mode .timer-btn.primary:hover {
+    background: #eee;
+}
+
+
+
+
+
+
+
+
+/* =========================
+   DAILY GOAL
+========================= */
+
+body.dark-mode .goal-header {
+    color: rgba(255, 255, 255, 0.60);
+}
+
+body.dark-mode .goal-progress {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+body.dark-mode .goal-progress-fill {
+    background: rgba(255, 255, 255, 0.75);
+}
+
+
+/* =========================
+   SESSION CARD
+========================= */
+
+body.dark-mode .session-card {
+    background: rgba(15, 17, 19, 0.55);
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+
+    color: #fff;
+}
+
+
+/* =========================
+   SESSION OPTIONS
+========================= */
+
+body.dark-mode .session-option {
+    border-color: rgba(255, 255, 255, 0.14);
+
+    background: rgba(255, 255, 255, 0.07);
+
+    color: rgba(255, 255, 255, 0.65);
+}
+
+body.dark-mode .session-option:hover,
+body.dark-mode .session-option.active {
+    background: #fff;
+
+    color: #222;
+
+    border-color: #fff;
+}
+.hide{
+    display: none;
+
+}
+
+/* =========================================================
+   TASKS / TODO
+========================================================= */
+
+.tasks-page {
+    width: 85%;
+    flex: 1;
+    padding: 90px 30px 0 30px;
+   
+
+   
+
+    color: #222;
+}
+
+
+/* ================= HEADER ================= */
+
+.tasks-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-bottom: 30px;
+}
+
+.tasks-header h2 {
+    margin: 6px 0;
+
+    font-size: 38px;
+    font-weight: 500;
+
+    color: #222;
+}
+
+.tasks-subtitle {
+    margin: 0;
+
+    color: rgba(0, 0, 0, 0.55);
+}
+
+
+/* ================= TASK COUNT ================= */
+
+.task-count {
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 6px;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(10px);
+}
+
+.task-count span:first-child {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.task-count span:last-child {
+    font-size: 13px;
+
+    color: rgba(0, 0, 0, 0.55);
+}
+
+
+/* ================= INPUT CARD ================= */
+
+.task-input-card {
+    display: flex;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border: 1px solid rgba(0, 0, 0, 0.10);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.08);
+
+    margin-bottom: 20px;
+}
+
+#task-input {
+    flex: 1;
+
+    min-width: 0;
+
+    padding: 14px 16px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 11px;
+
+    background: rgba(0, 0, 0, 0.04);
+
+    color: #222;
+
+    font-size: 15px;
+}
+
+#task-input::placeholder {
+    color: rgba(0, 0, 0, 0.40);
+}
+
+#add-task {
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #222;
+
+    color: white;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+#add-task:hover {
+    background: #333;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= TOOLBAR ================= */
+
+.task-toolbar {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.task-filters {
+    display: flex;
+
+    gap: 7px;
+}
+
+.task-filter {
+    padding: 8px 14px;
+
+    border-radius: 9px;
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    background: rgba(255, 255, 255, 0.40);
+
+    color: rgba(0, 0, 0, 0.60);
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.task-filter:hover,
+.task-filter.active {
+    background: #222;
+
+    color: white;
+
+    border-color: #222;
+}
+
+.clear-completed {
+    border: none;
+
+    background: transparent;
+
+    color: rgba(0, 0, 0, 0.50);
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.clear-completed:hover {
+    color: #222;
+}
+
+
+/* ================= TODO LIST ================= */
+
+.todo-list {
+    display: flex;
+    flex-direction: column;
+
+    max-height: 340px;
+
+    gap: 10px;
+
+    overflow-y: auto;
+}
+/* Scrollbar */
+.todo-list::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+.todo-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Thumb */
+.todo-list::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.20);
+    border-radius: 20px;
+}
+
+/* Hover */
+.todo-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.40);
+}
+
+/* Firefox */
+.todo-list {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.20) transparent;
+}
+body.dark-mode .todo-list {
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+body.dark-mode .todo-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.20);
+}
+
+body.dark-mode .todo-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.40);
+}
+/* ================= TODO ITEM ================= */
+
+.todo-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 17px 18px;
+
+    background: rgba(255, 255, 255, 0.62);
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+
+    border-radius: 15px;
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.25s ease;
+}
+
+.todo-item:hover {
+    transform: translateY(-2px);
+
+    background: rgba(255, 255, 255, 0.75);
+}
+
+
+/* ================= CHECKBOX ================= */
+
+.todo-check {
+    width: 21px;
+    height: 21px;
+
+    flex-shrink: 0;
+
+    border-radius: 6px;
+
+    border: 1.5px solid rgba(0, 0, 0, 0.30);
+
+    background: transparent;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+.todo-check:hover {
+    border-color: #222;
+}
+
+
+/* ================= TASK TEXT ================= */
+
+.todo-text {
+    flex: 1;
+
+    font-size: 15px;
+
+    color: #222;
+
+    transition: 0.2s ease;
+}
+
+
+/* ================= COMPLETED ================= */
+
+.todo-item.completed {
+    opacity: 0.60;
+}
+
+.todo-item.completed .todo-check {
+    background: #222;
+
+    border-color: #222;
+
+    color: white;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+
+    color: rgba(0, 0, 0, 0.45);
+}
+
+
+/* ================= DELETE ================= */
+
+.delete-task {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+   color: rgba(0, 0, 0, 0.689);
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    transition: 0.2s ease;
+}
+
+.delete-task:hover {
+    background: rgba(0, 0, 0, 0.07);
+
+    color: #222;
+}
+
+
+/* ================= EMPTY STATE ================= */
+
+.empty-tasks {
+    padding: 60px 20px;
+    
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.40);
+
+    border: 1px dashed rgba(0, 0, 0, 0.15);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(10px);
+}
+
+.empty-icon {
+    width: 48px;
+    height: 48px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.06);
+
+    font-size: 20px;
+}
+
+.empty-tasks h3 {
+    margin: 0 0 6px;
+
+    font-size: 17px;
+
+    font-weight: 500;
+}
+
+.empty-tasks p {
+    margin: 0;
+
+    font-size: 13px;
+
+    color: rgba(0, 0, 0, 0.50);
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark-mode .tasks-page {
+    color: white;
+    background-color: #222;
+}
+
+body.dark-mode .tasks-header h2 {
+    color: white;
+}
+
+body.dark-mode .tasks-subtitle {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+body.dark-mode .task-count {
+    background: rgba(15, 17, 19, 0.55);
+
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+body.dark-mode .task-count span:first-child {
+    color: white;
+}
+
+body.dark-mode .task-count span:last-child {
+    color: rgba(255, 255, 255, 0.50);
+}
+
+
+/* Input */
+
+body.dark-mode .task-input-card {
+    background: rgba(15, 17, 19, 0.55);
+
+    border-color: rgba(255, 255, 255, 0.14);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode #task-input {
+    background: rgba(255, 255, 255, 0.07);
+
+    color: white;
+}
+
+body.dark-mode #task-input::placeholder {
+    color: rgba(255, 255, 255, 0.40);
+}
+
+body.dark-mode #add-task {
+    background: white;
+
+    color: #222;
+}
+
+body.dark-mode #add-task:hover {
+    background: #eee;
+}
+
+
+/* Filters */
+
+body.dark-mode .task-filter {
+    background: rgba(255, 255, 255, 0.06);
+
+    border-color: rgba(255, 255, 255, 0.12);
+
+    color: rgba(255, 255, 255, 0.60);
+}
+
+body.dark-mode .task-filter:hover,
+body.dark-mode .task-filter.active {
+    background: white;
+
+    color: #222;
+
+    border-color: white;
+}
+
+body.dark-mode .clear-completed {
+    color: rgba(255, 255, 255, 0.50);
+}
+
+body.dark-mode .clear-completed:hover {
+    color: white;
+}
+
+
+/* Todo */
+
+body.dark-mode .todo-item {
+    background: rgba(15, 17, 19, 0.55);
+
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .todo-item:hover {
+    background: rgba(20, 22, 24, 0.70);
+}
+
+body.dark-mode .todo-check {
+    border-color: rgba(255, 255, 255, 0.30);
+
+    color: white;
+}
+
+body.dark-mode .todo-check:hover {
+    border-color: white;
+}
+
+body.dark-mode .todo-text {
+    color: white;
+}
+
+body.dark-mode .todo-item.completed .todo-check {
+    background: white;
+
+    border-color: white;
+
+    color: #222;
+}
+
+body.dark-mode .todo-item.completed .todo-text {
+    color: rgba(255, 255, 255, 0.40);
+}
+
+
+/* Delete */
+
+body.dark-mode .delete-task {
+    color: rgba(255, 255, 255, 0.40);
+}
+
+body.dark-mode .delete-task:hover {
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+}
+
+
+/* Empty */
+
+body.dark-mode .empty-tasks {
+    background: rgba(15, 17, 19, 0.40);
+
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+body.dark-mode .empty-icon {
+    background: rgba(255, 255, 255, 0.07);
+}
+
+body.dark-mode .empty-tasks h3 {
+    color: white;
+}
+
+body.dark-mode .empty-tasks p {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .tasks-page {
+        margin: 50px auto;
+    }
+
+    .tasks-header {
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
+    .tasks-header h2 {
+        font-size: 30px;
+    }
+
+    .task-input-card {
+        flex-direction: column;
+    }
+
+    #add-task {
+        height: 45px;
+    }
+
+    .task-toolbar {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 12px;
+    }
+}
+.edit-task {
+    width: 32px;
+    height: 32px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: rgba(0, 0, 0, 0.689);
+
+    cursor: pointer;
+
+    font-size: 17px;
+
+    transition: 0.2s ease;
+}
+
+.edit-task:hover {
+    background: rgba(0, 0, 0, 0.07);
+    color: #222;
+}
+
+body.dark-mode .edit-task {
+    color: rgba(255, 255, 255, 0.40);
+}
+
+body.dark-mode .edit-task:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+}
+
+
+
+
+/* ================= PLANNER ================= */
+
+.planner-page {
+     width: 85%;
+    flex: 1;
+    padding: 90px 30px 30px 30px;
+    
+   
+
+   
+
+    color: #111;
+    height: 100vh;
+    overflow-y: auto;
+  
+}
+
+
+/* Header */
+
+.planner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-bottom: 30px;
+}
+
+.planner-header h2 {
+    margin: 5px 0;
+
+    font-size: 32px;
+    font-weight: 500;
+
+    color: #222;
+}
+
+.planner-subtitle {
+    margin: 0;
+
+    color: rgba(0, 0, 0, 0.55);
+}
+
+
+/* Date */
+
+.planner-date {
+    display: flex;
+    flex-direction: column;
+
+    text-align: right;
+}
+
+.planner-day {
+    font-size: 20px;
+    font-weight: 500;
+
+    color: #222;
+}
+
+.planner-full-date {
+    margin-top: 4px;
+
+    font-size: 13px;
+
+    color: rgba(0, 0, 0, 0.50);
+}
+
+
+/* Main Layout */
+
+.planner-card {
+    width: 100%;
+    padding: 20px;
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.895);
+    border: 1px solid rgba(255, 255, 255, 0.895);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+/* HEADER */
+
+.planner-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.planner-card-header h3 {
+    margin: 5px 0 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+/* ADD BUTTON */
+
+.add-plan {
+    border: none;
+    padding: 9px 14px;
+
+    border-radius: 9px;
+
+    background: rgba(0, 0, 0, 0.07);
+    color: #222;
+
+    font-size: 12px;
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.add-plan:hover {
+    background: rgba(0, 0, 0, 0.13);
+}
+
+
+/* PLAN LIST */
+
+.plan-list {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* PLAN */
+
+
+.plan-item:last-child {
+    border-bottom: none;
+}
+
+
+/* TIME */
+
+.plan-time {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.45);
+}
+
+
+/* TITLE */
+
+.plan-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+}
+
+
+/* STATUS */
+
+.plan-status {
+    border: none;
+    background: transparent;
+
+    font-size: 17px;
+    cursor: pointer;
+
+    color: rgba(0, 0, 0, 0.45);
+}
+
+
+/* COMPLETED */
+
+.plan-item.completed .plan-title {
+    text-decoration: line-through;
+    opacity: 0.45;
+}
+
+
+/* DARK MODE */
+
+body.dark-mode .planner-page{
+    background-color: #222;
+    color: #fff;
+}
+body.dark-mode .planner-card {
+    background: #222;
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .planner-card-header h3 {
+    color: #fff;
+}
+body.dark-mode .planner-header h2
+,
+ body.dark-mode .planner-date span {
+    color: #fff;
+}
+
+body.dark-mode .planner-subtitle{
+    color: rgba(255, 255, 255, 0.50);
+}
+
+body.dark-mode .add-plan {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+body.dark-mode .plan-item {
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .plan-time {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+body.dark-mode .plan-title {
+    color: #fff;
+}
+
+body.dark-mode .plan-status {
+    color: rgba(255, 255, 255, 0.50);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 850px) {
+
+    .planner-container {
+        grid-template-columns: 1fr;
+    }
+
+    .planner-summary {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .planner-page {
+        margin: 40px auto;
+    }
+
+    .planner-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .planner-date {
+        text-align: left;
+    }
+
+    .planner-card {
+        padding: 20px;
+    }
+
+    .planner-card-header {
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+
+  
+
+}
+
+/* ================= PLANNER SCROLLBAR ================= */
+
+.planner-page {
+  
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.22) transparent;
+}
+
+/* Chrome / Edge / Safari */
+
+.planner-page::-webkit-scrollbar {
+    width: 7px;
+}
+
+.planner-page::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.planner-page::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.20);
+    border-radius: 20px;
+}
+
+.planner-page::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.40);
+}
+
+
+/* ================= DARK MODE ================= */
+
+body.dark-mode .planner-page {
+    scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+}
+
+body.dark-mode .planner-page::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body.dark-mode .planner-page::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.20);
+}
+
+body.dark-mode .planner-page::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.40);
+}
+
+/* ================= PLAN MODAL ================= */
+
+.plan-modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.30);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    z-index: 999;
+}
+
+.plan-modal-overlay.show {
+    display: flex;
+}
+
+
+/* MODAL */
+
+.plan-modal {
+    width: 400px;
+    max-width: calc(100% - 30px);
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+
+    animation: modalOpen 0.2s ease;
+}
+
+
+@keyframes modalOpen {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+}
+
+
+/* HEADER */
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 25px;
+}
+
+.modal-header h3 {
+    margin: 5px 0 0;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    color: #222;
+}
+
+
+.close-modal {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: rgba(0, 0, 0, 0.06);
+
+    font-size: 20px;
+    line-height: 1;
+
+    color: #333;
+
+    cursor: pointer;
+}
+
+.close-modal:hover {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+
+/* FORM */
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 11px;
+    font-weight: 600;
+
+    color: rgba(0, 0, 0, 0.55);
+
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 11px 12px;
+
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    border-radius: 9px;
+
+    outline: none;
+
+    background: rgba(0, 0, 0, 0.035);
+
+    color: #222;
+
+    font-size: 13px;
+}
+
+.form-group input:focus {
+    border-color: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.055);
+}
+
+
+/* ACTIONS */
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.cancel-plan,
+.save-plan {
+    border: none;
+
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.cancel-plan {
+    background: rgba(0, 0, 0, 0.06);
+    color: #333;
+}
+
+.save-plan {
+    background: #222;
+    color: #fff;
+}
+
+.cancel-plan:hover {
+    background: rgba(0, 0, 0, 0.11);
+}
+
+.save-plan:hover {
+    opacity: 0.85;
+}
+
+
+/* ================= DARK MODE ================= */
+
+body.dark-mode .plan-modal {
+    background: rgba(25, 25, 25, 0.90);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .modal-header h3 {
+    color: #fff;
+}
+
+body.dark-mode .close-modal {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+body.dark-mode .form-group label {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+body.dark-mode .form-group input {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.10);
+    color: #fff;
+}
+
+body.dark-mode .form-group input:focus {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+body.dark-mode .cancel-plan {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+body.dark-mode .save-plan {
+    background: #fff;
+    color: #111;
+}
+
+
+.plan-item {
+    display: grid;
+    grid-template-columns: 70px 1fr auto auto auto ;
+    align-items: center;
+    gap: 8px;
+
+    min-height: 55px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+
+/* EDIT + DELETE */
+
+.edit-plan,
+.delete-plan {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 7px;
+
+    background: transparent;
+
+    font-size: 14px;
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+/* EDIT */
+
+.edit-plan {
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.edit-plan:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: #222;
+}
+
+
+/* DELETE */
+
+.delete-plan {
+    color: rgba(180, 0, 0, 0.55);
+}
+
+.delete-plan:hover {
+    background: rgba(180, 0, 0, 0.10);
+    color: #b00000;
+}
+
+
+/* ================= DARK MODE ================= */
+
+body.dark-mode .edit-plan {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+body.dark-mode .edit-plan:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+body.dark-mode .delete-plan {
+    color: rgba(255, 100, 100, 0.65);
+}
+
+body.dark-mode .delete-plan:hover {
+    background: rgba(255, 80, 80, 0.12);
+    color: #ff7777;
+}
+
+
+
+/* ================= GOALS ================= */
+
+.goals-page {
+    width: 85%;
+    flex: 1;
+    
+    padding: 80px 20px 40px 20px;
+}
+
+
+/* HEADER */
+
+.goals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    margin-bottom: 25px;
+}
+
+.goals-header h2 {
+    margin: 5px 0;
+
+    font-size: 28px;
+    font-weight: 600;
+
+    color: #222;
+}
+
+.goals-subtitle {
+    margin: 0;
+
+    font-size: 13px;
+
+    color: rgba(0, 0, 0, 0.50);
+}
+
+
+/* ADD GOAL */
+
+.add-goal {
+    border: none;
+
+    padding: 10px 16px;
+
+    border-radius: 10px;
+
+    background: rgba(0, 0, 0, 0.08);
+
+    color: #222;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.add-goal:hover {
+    background: rgba(0, 0, 0, 0.14);
+}
+
+
+/* GOALS LIST */
+
+.goals-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* GOAL CARD */
+
+.goal-card {
+    padding: 18px;
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255);
+
+    border: 1px solid rgba(255, 255, 255);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    transition: 0.2s ease;
+}
+
+.goal-card:hover {
+    background: rgba(255, 255, 255, 0.38);
+}
+
+
+/* TOP */
+
+.goal-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.goal-title {
+    margin: 0;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #222;
+}
+
+.goal-target {
+    margin: 5px 0 0;
+
+    font-size: 12px;
+
+    color: rgba(0, 0, 0, 0.45);
+}
+
+
+/* ACTIONS */
+
+.goal-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-goal,
+.delete-goal {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 7px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.edit-goal {
+    color: rgba(0, 0, 0, 0.45);
+}
+
+.edit-goal:hover {
+    background: rgba(0, 0, 0, 0.08);
+    color: #222;
+}
+
+.delete-goal {
+    color: rgba(180, 0, 0, 0.55);
+}
+
+.delete-goal:hover {
+    background: rgba(180, 0, 0, 0.10);
+    color: #b00000;
+}
+
+
+/* PROGRESS */
+
+.goal-progress-area {
+    margin-top: 18px;
+}
+
+.goal-progress-info {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+
+    font-size: 11px;
+
+    color: rgba(0, 0, 0, 0.50);
+}
+
+.goal-percentage {
+    font-weight: 600;
+}
+
+
+/* PROGRESS BAR */
+
+.goal-progress-bar {
+    width: 100%;
+    height: 6px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.goal-progress-fill {
+    height: 100%;
+
+    border-radius: inherit;
+
+    background: #222;
+
+    transition: width 0.3s ease;
+}
+
+
+/* BOTTOM */
+
+.goal-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 15px;
+}
+
+.goal-status {
+    font-size: 11px;
+
+    color: rgba(0, 0, 0, 0.45);
+}
+
+
+/* COUNTER */
+
+.goal-counter {
+    display: flex;
+    gap: 5px;
+}
+
+.decrease-goal,
+.increase-goal {
+    width: 27px;
+    height: 27px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: rgba(0, 0, 0, 0.06);
+
+    font-size: 16px;
+
+    color: #333;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.decrease-goal:hover,
+.increase-goal:hover {
+    background: rgba(0, 0, 0, 0.12);
+}
+
+
+/* ================= DARK MODE ================= */
+body.dark-mode .goals-page{
+    background-color: #222;
+}
+body.dark-mode .goals-header h2 {
+    color: #fff;
+}
+
+body.dark-mode .goals-subtitle {
+    color: rgba(255, 255, 255, 0.50);
+}
+
+body.dark-mode .add-goal {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+body.dark-mode .add-goal:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+body.dark-mode .goal-card {
+    background: rgba(20, 20, 20, 0.30);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .goal-card:hover {
+    background: rgba(30, 30, 30, 0.40);
+}
+
+body.dark-mode .goal-title {
+    color: #fff;
+}
+
+body.dark-mode .goal-target {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+body.dark-mode .edit-goal {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+body.dark-mode .edit-goal:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+body.dark-mode .delete-goal {
+    color: rgba(255, 100, 100, 0.65);
+}
+
+body.dark-mode .delete-goal:hover {
+    background: rgba(255, 80, 80, 0.12);
+    color: #ff7777;
+}
+
+body.dark-mode .goal-progress-info {
+    color: rgba(255, 255, 255, 0.50);
+}
+
+body.dark-mode .goal-progress-bar {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .goal-progress-fill {
+    background: #fff;
+}
+
+body.dark-mode .goal-status {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+body.dark-mode .decrease-goal,
+body.dark-mode .increase-goal {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+body.dark-mode .decrease-goal:hover,
+body.dark-mode .increase-goal:hover {
+    background: rgba(255, 255, 255, 0.14);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .goals-page {
+        padding: 15px 0 30px;
+    }
+
+    .goals-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .goals-header h2 {
+        font-size: 24px;
+    }
+
+}
+
+/* ================= GOAL MODAL ================= */
+
+.goal-modal-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.30);
+
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+
+    z-index: 999;
+}
+
+.goal-modal-overlay.show {
+    display: flex;
+}
+
+
+.goal-modal {
+    width: 400px;
+    max-width: calc(100% - 30px);
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.90);
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+
+/* HEADER */
+
+.goal-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 25px;
+}
+
+.goal-modal-header h3 {
+    margin: 5px 0 0;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    color: #222;
+}
+
+
+.close-goal-modal {
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: rgba(0, 0, 0, 0.06);
+
+    font-size: 20px;
+
+    color: #333;
+
+    cursor: pointer;
+}
+
+
+/* FORM */
+
+.goal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.goal-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.goal-form-group label {
+    font-size: 11px;
+    font-weight: 600;
+
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.goal-form-group input {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 11px 12px;
+
+    border: 1px solid rgba(0, 0, 0, 0.10);
+
+    border-radius: 9px;
+
+    outline: none;
+
+    background: rgba(0, 0, 0, 0.035);
+
+    color: #222;
+
+    font-size: 13px;
+}
+
+.goal-form-group input:focus {
+    border-color: rgba(0, 0, 0, 0.25);
+}
+
+
+/* ACTIONS */
+
+.goal-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 25px;
+}
+
+.cancel-goal,
+.save-goal {
+    border: none;
+
+    padding: 10px 15px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+}
+
+.cancel-goal {
+    background: rgba(0, 0, 0, 0.06);
+    color: #333;
+}
+
+.save-goal {
+    background: #222;
+    color: #fff;
+}
+
+
+/* DARK MODE */
+
+body.dark-mode .goal-modal {
+    background: rgba(25, 25, 25, 0.92);
+    border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .goal-modal-header h3 {
+    color: #fff;
+}
+
+body.dark-mode .close-goal-modal {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+body.dark-mode .goal-form-group label {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+body.dark-mode .goal-form-group input {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.10);
+    color: #fff;
+}
+
+body.dark-mode .cancel-goal {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+}
+
+body.dark-mode .save-goal {
+    background: #fff;
+    color: #111;
+}
