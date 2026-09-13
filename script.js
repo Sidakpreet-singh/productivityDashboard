@@ -12,7 +12,7 @@ setInterval(() => {
   };
 
   const formattedDate = sDate.toLocaleDateString("en-GB", options);
-  console.log(formattedDate);
+  
 
   date.textContent = formattedDate;
   time.textContent = sDate.toLocaleTimeString();
@@ -41,7 +41,7 @@ function getUserLocation() {
     },
     (error) => {
       console.log("Location error:", error.message);
-      alert("location access denied!")
+      alert("location access denied!");
       lat = defaultLocation.lat;
       lon = defaultLocation.lon;
 
