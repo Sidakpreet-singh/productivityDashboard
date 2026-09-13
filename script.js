@@ -41,6 +41,7 @@ function getUserLocation() {
     },
     (error) => {
       console.log("Location error:", error.message);
+      alert("location access denied!")
       lat = defaultLocation.lat;
       lon = defaultLocation.lon;
 
